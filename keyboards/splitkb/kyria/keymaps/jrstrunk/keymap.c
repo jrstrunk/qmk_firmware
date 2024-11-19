@@ -242,7 +242,7 @@ const key_override_t colon_semic_key_override = ko_make_basic(MOD_MASK_SHIFT, KC
 // const key_override_t perc_f12_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_PERC, KC_F12);
 
 // This globally defines all key overrides to be used
-const key_override_t **key_overrides = (const key_override_t *[]){
+const key_override_t *key_overrides[] = {
     &del_esc_key_override,
     &ctrlbackspace_backspace_key_override,
     &shftbackspace_backspace_key_override,
@@ -272,12 +272,10 @@ const key_override_t **key_overrides = (const key_override_t *[]){
     // &bslash_f5_key_override,
     &dollar_ctry_key_override,
     &langle_rangle_key_override,
-    &colon_semic_key_override,
+    &colon_semic_key_override
     // &underscore_ctrlf_key_override,
     // &pipe_ctrlw_key_override,
     // &ranglebracket_pgdn_key_override,
     // &perc_f12_key_override,
-
-    NULL // Null terminate the array of overrides!
 };
 
