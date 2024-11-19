@@ -25,6 +25,7 @@ enum layers {
 
 // Aliases for readability
 #define SYM_SP   LT(_SYM, KC_SPC) // sym when held, space when tapped
+#define UND_SFT   MT(MOD_RSFT, KC_UNDS) // sym when held, space when tapped 
 
 #define OS_LSFT  OSM(MOD_LSFT)
 #define OS_RSFT  OSM(MOD_RSFT)
@@ -34,6 +35,9 @@ enum layers {
 #define OS_RALT  OSM(MOD_RALT)
 #define OS_LGUI  OSM(MOD_LGUI)
 #define CTL_BKS  LCTL(KC_BSPC)
+
+#define KVM_1  LCTL(RCTL(KC_1))
+#define KVM_2  LCTL(RCTL(KC_2))
 
 // Note: LAlt/Enter (ALT_ENT) is not the same thing as the keyboard shortcut Alt+Enter.
 // The notation `mod/tap` denotes a key that activates the modifier `mod` when held down, and
@@ -49,16 +53,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |  Tab   |   A  |   S  |   T  |   H  |   G  |                              |   M  |   N  |   E  |   O  |   I  |  Home  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  | CtlC | CtlV |   R  |   V  | Space|  Ctl |  | RAlt | Enter|   K  |   L  |  ,/! |  ./? |   J  |  End   |
+ * | LShift |   Z  | CtlC | CtlV |   R  |   V  | Space|  Ctl |  | Enter|   _  |   K  |   L  |  ,/! |  ./? |   J  |  End   |
  * `----------------------+------+------+------+   /  +      |  |      +   /  +------+------+------+----------------------'
- *                        | GPad | LGUI | LAlt | Sym  |  Ctl |  | RAlt |RShift| RCtl | RCtl | PlayM|
+ *                        | GPad | LGUI | LAlt | Sym  |  Ctl |  | Enter|RShift| Enter| RCtl | KVM2 |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_COLEMAK_JS] = LAYOUT(
      KC_DEL  , KC_Q ,  KC_W  ,  KC_D  ,  KC_C  ,  KC_B  ,                                         KC_Y   ,  KC_F  ,  KC_U  , KC_P  ,  KC_X  , CTL_BKS,
      KC_TAB  , KC_A ,  KC_S  ,  KC_T  ,  KC_H  ,  KC_G  ,                                         KC_M   ,  KC_N  ,  KC_E  , KC_O  ,  KC_I  , KC_HOME,
-     KC_LSFT , KC_Z , C(KC_C), C(KC_V),  KC_R  ,  KC_V  , SYM_SP , KC_LCTL,     KC_RALT ,SC_SENT, KC_K   ,  KC_L  , KC_COMM, KC_DOT,  KC_J  , KC_END ,
-                             TG(_GPAD), KC_LGUI, KC_LALT, SYM_SP , KC_LCTL,     KC_RALT ,SC_SENT, KC_RCTL, KC_RCTL, KC_MPLY
+     KC_LSFT , KC_Z , C(KC_C), C(KC_V),  KC_R  ,  KC_V  , SYM_SP , KC_LCTL,     KC_ENT ,UND_SFT, KC_K    ,  KC_L  , KC_COMM, KC_DOT,  KC_J  , KC_END ,
+                             TG(_GPAD), KC_LGUI, KC_LALT, SYM_SP , KC_LCTL,     KC_ENT ,UND_SFT, KC_ENT  , KC_RCTL, KVM_2
     ),
 
 /*_
@@ -69,16 +73,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |  `/~   | "/'  |  {/} |  (/) |-/CtlX|  [/] |                              | PgUp |Ctrl← |   ↑  |Ctrl→ |//Ctl/|   F2   |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * |   F5   |      | </>  |  :/; |  =   |  |   |      |      |  |      |      | PgDn |   ←  |   ↓  |   →  |      |   F12  |
+ * |        |      | </>  |  :/; |  =   |  |   |      |      |  |      |      | PgDn |   ←  |   ↓  |   →  |      |   F5   |
  * `----------------------+------+------+------+      +      |  |      +      +------+------+------+----------------------'
- *                        |      |      |      |      |      |  |      |      |      |      |      |
+ *                        |      |      |      |      |      |  |      |      |      |      | KVM1 |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_SYM] = LAYOUT(
      KC_ESC  , KC_6   , KC_4   , KC_2   , KC_0   , KC_8   ,                                        KC_9   , KC_1     , KC_3   , KC_5      , KC_7    , KC_BSPC,
      KC_GRAVE, KC_DQUO, KC_LCBR, KC_LPRN, KC_MINS, KC_LBRC,                                        KC_PGUP,C(KC_LEFT), KC_UP  ,C(KC_RIGHT), KC_SLSH , KC_F2  ,
-     KC_F5   , KC_TRNS, KC_LABK, KC_COLN, KC_EQL , KC_PIPE, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_PGDN, KC_LEFT  , KC_DOWN, KC_RIGHT  , KC_TRNS , KC_F12 ,
-                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS  , KC_TRNS
+     KC_TRNS , KC_TRNS, KC_LABK, KC_COLN, KC_EQL , KC_PIPE, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_PGDN, KC_LEFT  , KC_DOWN, KC_RIGHT  , KC_TRNS , KC_F5  ,
+                                 KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS,    KC_TRNS, KC_TRNS, KC_TRNS, KC_TRNS  , KVM_1
     ),
 
 /*
