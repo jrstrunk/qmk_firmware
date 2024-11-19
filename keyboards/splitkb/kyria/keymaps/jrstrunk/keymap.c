@@ -49,9 +49,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |  Tab   |   A  |   S  |   T  |   H  |   G  |                              |   M  |   N  |   E  |   O  |   I  |  Home  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  | CtlC | CtlV |   R  |   V  | Space|  Ctl |  |OSRAlt| Enter|   K  |   L  |  ,/! |  ./? |   J  |  End   |
+ * | LShift |   Z  | CtlC | CtlV |   R  |   V  | Space|  Ctl |  | RAlt | Enter|   K  |   L  |  ,/! |  ./? |   J  |  End   |
  * `----------------------+------+------+------+   /  +      |  |      +   /  +------+------+------+----------------------'
- *                        | GPad | LGUI |OSLAlt| Sym  |  Ctl |  |OSRAlt|RShift|OSRCtl|OSRCtl| PlayM|
+ *                        | GPad | LGUI | LAlt | Sym  |  Ctl |  | RAlt |RShift| RCtl | RCtl | PlayM|
  *                        `----------------------------------'  `----------------------------------'
  */
     [_COLEMAK_JS] = LAYOUT(
