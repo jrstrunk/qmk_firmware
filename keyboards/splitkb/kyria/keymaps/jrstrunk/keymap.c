@@ -53,16 +53,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * |--------+------+------+------+------+------|                              |------+------+------+------+------+--------|
  * |  Tab   |   A  |   S  |   T  |   H  |   G  |                              |   M  |   N  |   E  |   O  |   I  |  Home  |
  * |--------+------+------+------+------+------+-------------.  ,-------------+------+------+------+------+------+--------|
- * | LShift |   Z  | CtlC | CtlV |   R  |   V  | Space|  Ctl |  | Enter|   _  |   K  |   L  |  ,/! |  ./? |   J  |  End   |
+ * | LShift |   Z  | CtlC |  _/( |   R  |   V  | Space|  Ctl |  | CtlV | Enter|   K  |   L  |  ,/! |  ./? |   J  |  End   |
  * `----------------------+------+------+------+   /  +      |  |      +   /  +------+------+------+----------------------'
- *                        | GPad | LGUI | LAlt | Sym  |  Ctl |  | Enter|RShift| Enter| RCtl | KVM2 |
+ *                        | GPad | LGUI | LAlt | Sym  |  Ctl |  | CtlV |RShift| Enter| RCtl | KVM2 |
  *                        `----------------------------------'  `----------------------------------'
  */
     [_COLEMAK_JS] = LAYOUT(
      KC_DEL  , KC_Q ,  KC_W  ,  KC_D  ,  KC_C  ,  KC_B  ,                                         KC_Y   ,  KC_F  ,  KC_U  , KC_P  ,  KC_X  , CTL_BKS,
      KC_TAB  , KC_A ,  KC_S  ,  KC_T  ,  KC_H  ,  KC_G  ,                                         KC_M   ,  KC_N  ,  KC_E  , KC_O  ,  KC_I  , KC_HOME,
-     KC_LSFT , KC_Z , C(KC_C), C(KC_V),  KC_R  ,  KC_V  , SYM_SP , KC_LCTL,     KC_ENT ,UND_SFT, KC_K    ,  KC_L  , KC_COMM, KC_DOT,  KC_J  , KC_END ,
-                             TG(_GPAD), KC_LGUI, KC_LALT, SYM_SP , KC_LCTL,     KC_ENT ,UND_SFT, KC_ENT  , KC_RCTL, KVM_2
+     KC_LSFT , KC_Z , C(KC_C), KC_UNDS,  KC_R  ,  KC_V  , SYM_SP , KC_LCTL,     C(KC_V),SC_SENT, KC_K    ,  KC_L  , KC_COMM, KC_DOT,  KC_J  , KC_END ,
+                             TG(_GPAD), KC_LGUI, KC_LALT, SYM_SP , KC_LCTL,     C(KC_V),SC_SENT, KC_ENT  , KC_RCTL, KVM_2
     ),
 
 /*_
@@ -244,6 +244,7 @@ const key_override_t colon_semic_key_override = ko_make_basic(MOD_MASK_SHIFT, KC
 // const key_override_t pipe_ctrlw_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_PIPE, C(KC_W));
 // const key_override_t ranglebracket_pgdn_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_RABK, KC_PGDN);
 // const key_override_t perc_f12_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_PERC, KC_F12);
+const key_override_t unds_paren_key_override = ko_make_basic(MOD_MASK_SHIFT, KC_UNDS, KC_LPRN);
 
 // This globally defines all key overrides to be used
 const key_override_t *key_overrides[] = {
@@ -276,10 +277,11 @@ const key_override_t *key_overrides[] = {
     // &bslash_f5_key_override,
     &dollar_ctry_key_override,
     &langle_rangle_key_override,
-    &colon_semic_key_override
+    &colon_semic_key_override,
     // &underscore_ctrlf_key_override,
     // &pipe_ctrlw_key_override,
     // &ranglebracket_pgdn_key_override,
     // &perc_f12_key_override,
+    &unds_paren_key_override
 };
 
