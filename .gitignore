@@ -122,11 +122,3 @@ via*.json
 /docs/**
 /users/**
 /layouts/community/**
-/keyboards/**
-!/keyboards/zsa/
-!/keyboards/zsa/**
-/keyboards/zsa/**/keymaps/**
-!/keyboards/zsa/**/keymaps/default
-!/keyboards/zsa/**/keymaps/default/**
-!/keyboards/zsa/**/keymaps/oryx
-!/keyboards/zsa/**/keymaps/oryx/**
